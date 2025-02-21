@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: rgb(16, 48, 8);
+    --secondary-color: red;
+    --primary-font: "Cormorant Garamond", 'Times New Roman', Times, serif;
+    --secondary-font: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+    font-family: var(--secondary-font);
+    color: white;
+}
+
+body {
+    background-color: var(--primary-color);
+    background-image: url(green-felt-bg.webp);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+}
+
+/* ===== Start Screen ===== */
+
+#start-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    height: 100%;
+}
+
+#start-screen h1 {
+    font-family: var(--primary-font);
+    font-size: 3rem;
+}
+
+#start-game-btn {
+    background-color: transparent;
+    padding: 10px 2rem;
+    border-radius: 100vmax;
+    border: 2px solid white;
+    font-size: 1.5rem;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+#start-game-btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: 800;
+}
+
+/* ===== Main Screen ====== */
+
+main {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+/* ===== Data container ===== */
+
+.data-container {
+    height: fit-content;
+    width: 16rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    border: 2px solid white;
+    position: absolute;
+    top: 2rem;
+    padding: 1rem;
+    border-radius: 2rem;
+
+}
+
+.data-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.white-line {
+    height: 100%;
+    width: 2px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+}
+
+h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.wrapper {
+    color: white;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+/* ===== time and score animation ===== */
+
+.wrapper.scale {
+    animation: scale 0.2s ease forwards;
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+        font-weight: 600;
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* ===== Poker msg container */
+
+#poker-msg-container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10rem;
+    z-index: 100;
+    width: 16rem;
+    padding: 10px 0;
+    border-radius: 1rem;
+    background-color: red;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem;
+    font-weight: 600;
+
+}
+
+#poker-msg-container.appear {
+    display: flex;
+    animation: appear 1s ease forwards;
+}
+
+@keyframes appear {
+    0%, 100% {
+        opacity: 0;
+        scale: 0;
+    }
+
+    25% {
+        opacity: 1;
+        scale: 1.1;
+    }
+
+    30%, 75% {
+        opacity: 1;
+        scale: 1;
+    }
+
+
+}
+
+/* ===== Game Area ===== */
+
+#game-area {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 10rem 0 5rem;
+    overflow: hidden;
+}
+
+/* ===== Card ===== */
+
+.card {
+    height: 250px;
+    aspect-ratio: 1/1.4;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 0, 0, 0);
+    cursor: pointer;
+}
+
+.card:hover {
+    border: 5px solid red;
+    scale: 1.05;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+}
+
+/* ===== Remove Card animation ===== */
+
+.card.remove {
+    animation: shrink 0.3s cubic-bezier(0.68, -0.75, 0.27, 1.55) forwards;
+
+}
+
+@keyframes shrink {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 0;
+    }
+}
+
+/* ===== End Screen ===== */
+
+#end-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
+}
+
+#end-screen h1 {
+    font-size: 3rem;
+}
+
+.results-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid white;
+    width: 30%;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.final-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    flex: 1;
+}
+
+.final-white-line {
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background-color: white;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.end-wrapper {
+    font-size: 3rem;
+    font-family: var(--primary-font);
+    font-weight: 600;
+
+}
+
+/* ==================== RESPONSIVE DESIGN ====================  */
+
+@media (max-width: 768px) {
+    .card {
+        height: 100px;
+        border-radius: 5px;
+    }
+
+    .results-container {
+        flex-wrap: wrap;
+        width: 70%;
+    }
+
+    .final-container {
+        min-width: 200px;
+    }
+
+    .final-white-line {
+        display: none;
+    }
+}

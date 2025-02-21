@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>52 Pickup</title>
+</head>
+
+<body>
+    <div id="start-screen">
+        <h1>52 Pickup</h1>
+        <button id="start-game-btn">Start Game</button>
+    </div>
+
+    <main id="main-area">
+
+        <div class="data-container">
+            <div>
+                <h3 class="time-header">TIME:</h3>
+                <div id="time-wrapper" class="wrapper">10</div>
+            </div>
+            <span class="white-line"></span>
+            <div>
+                <h3 class="score-header">SCORE:</h3>
+                <div id="score-wrapper" class="wrapper">00</div>
+            </div>
+        </div>
+
+        <div id="poker-msg-container">
+            FLUSH!
+        </div>
+
+        <div id="game-area"></div>
+
+    </main>
+
+    <div id="end-screen">
+        <h1>Game Over!</h1>
+        <div class="results-container">
+            <div class="final-container">
+                <h3>Final Score:</h3>
+                <div id="final-score-wrapper" class="end-wrapper">234</div>
+            </div>
+            <span class="final-white-line"></span>
+            <div class="final-container">
+                <h3>Cards Clicked:</h3>
+                <div id="cards-clicked-wrapper" class="end-wrapper"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
