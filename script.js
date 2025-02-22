@@ -30,13 +30,13 @@ function createCard(rank, suit) {
 function getName(rank) {
   let name = "";
   if (rank === 11) {
-    name = "Jack";
+    name = "jack";
   } else if (rank === 12) {
-    name = "Queen";
+    name = "queen";
   } else if (rank === 13) {
-    name = "King";
+    name = "king";
   } else if (rank === 14) {
-    name = "Ace";
+    name = "ace";
   } else {
     name = rank;
   }
@@ -107,10 +107,19 @@ function scatterDeck(deck) {
   });
 
   let cards = document.querySelectorAll(".card");
-  // card click
+
+  // Card click
+  function handleCardClick(e) {
+    const suitRankClass = e.currentTarget.classList[1];
+    cardClick(suitRankClass);
+    e.currentTarget.removeEventListener("click", handleCardClick);
+    e.currentTarget.removeEventListener("touchstart", handleCardClick);
+  }
+
+  // Add event listeners
   cards.forEach((card) => {
-    card.addEventListener("click", () => cardClick(card.classList[1]));
-    card.addEventListener("touchstart", () => cardClick(card.classList[1]));
+    card.addEventListener("click", handleCardClick);
+    card.addEventListener("touchstart", handleCardClick);
   });
 }
 
@@ -164,6 +173,7 @@ function cardClick(suitRankClass) {
   updateCardsClicked(suitRankClass);
   checkCardSequence(cardsClicked);
   removeCard(suitRankClass);
+  updateClickCount();
 }
 
 function getCardRank(suitRankClass) {
@@ -205,7 +215,6 @@ function removeCard(suitRankClass) {
     card.classList.remove("remove");
     card.style.display = "none";
   }, 300);
-  updateClickCount();
 }
 
 // Update cards clicked array
