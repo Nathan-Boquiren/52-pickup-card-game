@@ -158,19 +158,16 @@ h3 {
     0%, 100% {
         transform: translateY(2rem);
         opacity: 0;
-        scale: 0;
     }
 
     25% {
         transform: translateY(-0.5rem);
         opacity: 1;
-        scale: 1.1;
     }
 
     30%, 75% {
         transform: translateY(0rem);
         opacity: 1;
-        scale: 1;
     }
 
 
