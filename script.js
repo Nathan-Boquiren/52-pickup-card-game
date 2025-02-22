@@ -11,11 +11,6 @@ function buildDeck() {
       deck.push(createCard(i, suit));
     });
   }
-
-  function isFlush(cards) {
-    const suit = cards[0].suit;
-    return cards.every((card) => card.suit === suit);
-  }
   return deck;
 }
 
@@ -101,7 +96,7 @@ function updateTimerWrapper(time) {
 function scatterDeck(deck) {
   deck.forEach((card) => {
     gameArea.innerHTML += `
-      <div class="card ${card.suit}-${card.rank}" style="background-image: url(/card-images/${card.suit}-${card.rank}.png)">
+      <div class="card ${card.suit}-${card.rank}" style="background-image: url(../card-images/${card.suit}-${card.rank}.png)">
       </div>`;
     scatterCard(`${card.suit}-${card.rank}`);
   });
