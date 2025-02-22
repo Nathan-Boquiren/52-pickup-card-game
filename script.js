@@ -5,7 +5,7 @@ let ct = console.table;
 
 function buildDeck() {
   let deck = [];
-  const suits = ["Hearts", "Spades", "Diamonds", "Clubs"];
+  const suits = ["hearts", "spades", "diamonds", "clubs"];
   for (let i = 2; i <= 14; i++) {
     suits.forEach((suit) => {
       deck.push(createCard(i, suit));
