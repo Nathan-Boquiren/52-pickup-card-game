@@ -260,13 +260,13 @@ function updateStamina() {
 
 function updateStaminaBar() {
   staminaBar.style.width = `${stamina}%`;
+  staminaLabel.classList.remove("flash");
   if (stamina >= 75) {
     staminaBar.style.backgroundColor = "rgb(57, 129, 57)";
   } else if (stamina >= 50 && stamina < 75) {
     staminaBar.style.backgroundColor = "#9e983f";
   } else if (stamina >= 25 && stamina < 50) {
     staminaBar.style.backgroundColor = "rgb(163, 106, 0)";
-    staminaLabel.classList.remove("flash");
   } else if (stamina >= 0 && stamina < 25) {
     staminaBar.style.backgroundColor = "rgb(160, 52, 52)";
     staminaLabel.classList.add("flash");
