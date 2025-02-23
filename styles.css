@@ -68,6 +68,46 @@ main {
     display: none;
 }
 
+/* no stamina */
+
+#no-stamina-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: brightness(0.5);
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    font-size: 1rem;
+}
+
+#no-stamina-overlay.no-stamina {
+    animation: fadeIn 0.2s ease forwards;
+    display: flex;
+}
+
+#no-stamina-overlay h2 {
+    color: white;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        font-size: 1rem;
+    }
+
+    to {
+        opacity: 1;
+        font-size: 2rem;
+    }
+}
+
 /* ===== Data container ===== */
 
 .data-container {
@@ -75,27 +115,28 @@ main {
     width: 16rem;
     display: flex;
     justify-content: space-around;
-    gap: 2rem;
+    flex-wrap: wrap;
     border: 2px solid white;
     position: absolute;
     top: 2rem;
-    padding: 1rem;
     border-radius: 2rem;
 
 }
 
-.data-container div {
+.top-wrapper {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
 }
 
-.white-line {
-    height: 100%;
-    width: 2px;
-    background-color: white;
-    position: absolute;
-    top: 0;
+.top-wrapper:nth-child(1) {
+    border-right: 1px solid white;
+}
+
+.top-wrapper:nth-child(2) {
+    border-left: 1px solid white;
 }
 
 h3 {
@@ -107,6 +148,59 @@ h3 {
     color: white;
     font-size: 2rem;
     font-weight: 400;
+}
+
+/* stamina bar */
+
+.stamina-container {
+    border-top: 2px solid white;
+    width: 100%;
+    padding: 1rem;
+}
+
+#stamina-wrapper {
+    width: 100%;
+    height: 2rem;
+    background-color: transparent;
+    outline: 2px solid white;
+    border-radius: 100vmax;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#stamina-label {
+    z-index: 100;
+    font-weight: 500;
+    color: white;
+}
+
+#stamina-label.flash {
+    animation: flash 0.75s ease infinite;
+}
+
+@keyframes flash {
+    0%, 100% {
+        color: white;
+    }
+
+    50% {
+        color: red;
+    }
+}
+
+
+#stamina-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: inherit;
+    border-radius: inherit;
+    background-color: rgb(57, 129, 57);
+    width: 100%;
+    transition: background-color 0.3s ease, width 0.1s linear;
 }
 
 /* ===== time and score animation ===== */
@@ -137,7 +231,7 @@ h3 {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 10rem;
+    top: 12rem;
     z-index: 100;
     width: 16rem;
     padding: 10px 0;
@@ -179,9 +273,11 @@ h3 {
     position: relative;
     height: 100%;
     width: 100%;
-    margin: 10rem 0 5rem;
+    margin: 12rem 0 5rem;
     overflow: hidden;
 }
+
+
 
 /* ===== Card ===== */
 

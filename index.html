@@ -19,14 +19,19 @@
     <main id="main-area">
 
         <div class="data-container">
-            <div>
+            <div class="top-wrapper">
                 <h3 class="time-header">TIME:</h3>
                 <div id="time-wrapper" class="wrapper">10</div>
             </div>
-            <span class="white-line"></span>
-            <div>
+            <div class="top-wrapper">
                 <h3 class="score-header">SCORE:</h3>
                 <div id="score-wrapper" class="wrapper">00</div>
+            </div>
+            <div class="stamina-container">
+                <div id="stamina-wrapper">
+                    <h3 id="stamina-label">STAMINA</h3>
+                    <div id="stamina-bar"></div>
+                </div>
             </div>
         </div>
 
@@ -35,6 +40,10 @@
         </div>
 
         <div id="game-area"></div>
+
+        <div id="no-stamina-overlay">
+            <h2>NO MORE STAMINA FOR 2 SECONDS</h2>
+        </div>
 
     </main>
 

@@ -48,9 +48,13 @@ const startBtn = document.getElementById("start-game-btn");
 const mainScreen = document.getElementById("main-area");
 const gameArea = document.getElementById("game-area");
 const pokerMsgContainer = document.getElementById("poker-msg-container");
+const noStaminaOverlay = document.getElementById("no-stamina-overlay");
 
 const timeWrapper = document.getElementById("time-wrapper");
 const scoreWrapper = document.getElementById("score-wrapper");
+const staminaWrapper = document.getElementById("stamina-wrapper");
+const staminaBar = document.getElementById("stamina-bar");
+const staminaLabel = document.getElementById("stamina-label");
 
 const endScreen = document.getElementById("end-screen");
 
@@ -59,6 +63,8 @@ let timeLeft = 10;
 let score = 0;
 let cardsCount = 0;
 let cardsClicked = [];
+let stamina = 100;
+let noStamina = false;
 
 // ===== Start Screen Event Listeners =====
 
@@ -105,6 +111,9 @@ function scatterDeck(deck) {
 
   // Card click
   function handleCardClick(e) {
+    if (noStamina) {
+      return;
+    }
     const suitRankClass = e.currentTarget.classList[1];
     cardClick(suitRankClass);
     e.currentTarget.removeEventListener("click", handleCardClick);
@@ -169,6 +178,7 @@ function cardClick(suitRankClass) {
   checkCardSequence(cardsClicked);
   removeCard(suitRankClass);
   updateClickCount();
+  updateStamina();
 }
 
 function getCardRank(suitRankClass) {
@@ -199,6 +209,9 @@ function updateScoreWrapper(score) {
 
 function updateClickCount() {
   cardsCount++;
+  if (cardsCount === 52) {
+    endGame();
+  }
 }
 
 // Remove card
@@ -225,6 +238,49 @@ function updateCardsClicked(suitRankClass) {
     }
   });
 }
+
+// Update stamina variable
+
+function updateStamina() {
+  stamina -= 10;
+  if (stamina <= 0) {
+    stamina = 0;
+    noStamina = true;
+    noStaminaOverlay.classList.add("no-stamina");
+    cl("No more stamina");
+    setTimeout(() => {
+      stamina = 50;
+      noStamina = false;
+      noStaminaOverlay.classList.remove("no-stamina");
+    }, 2000);
+  }
+
+  updateStaminaBar();
+}
+
+function updateStaminaBar() {
+  staminaBar.style.width = `${stamina}%`;
+  if (stamina >= 75) {
+    staminaBar.style.backgroundColor = "rgb(57, 129, 57)";
+  } else if (stamina >= 50 && stamina < 75) {
+    staminaBar.style.backgroundColor = "#9e983f";
+  } else if (stamina >= 25 && stamina < 50) {
+    staminaBar.style.backgroundColor = "rgb(163, 106, 0)";
+    staminaLabel.classList.remove("flash");
+  } else if (stamina >= 0 && stamina < 25) {
+    staminaBar.style.backgroundColor = "rgb(160, 52, 52)";
+    staminaLabel.classList.add("flash");
+  }
+}
+
+function regenerateStamina() {
+  if (stamina < 100 && !noStamina) {
+    stamina += 2;
+    updateStaminaBar();
+  }
+}
+
+setInterval(regenerateStamina, 100);
 
 // Check card click sequence for poker hands
 
