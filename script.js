@@ -242,7 +242,7 @@ function updateCardsClicked(suitRankClass) {
 // Update stamina variable
 
 function updateStamina() {
-  stamina -= 10;
+  stamina -= 12;
   if (stamina <= 0) {
     stamina = 0;
     noStamina = true;
