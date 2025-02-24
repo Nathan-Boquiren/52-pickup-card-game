@@ -43,6 +43,9 @@ let deck = buildDeck();
 // ===== DOM Elements =====
 
 const startScreen = document.getElementById("start-screen");
+const rulesContainer = document.getElementById("rules-container-wrapper");
+const closeRulesBtn = document.getElementById("close-rules-btn");
+const seeRulesBtn = document.getElementById("see-rules-btn");
 const startBtn = document.getElementById("start-game-btn");
 
 const mainScreen = document.getElementById("main-area");
@@ -67,6 +70,19 @@ let stamina = 100;
 let noStamina = false;
 
 // ===== Start Screen Event Listeners =====
+
+seeRulesBtn.addEventListener("click", () => {
+  rulesContainer.classList.add("show");
+  document.addEventListener("click", (e) => {
+    if (e.target === rulesContainer) {
+      rulesContainer.classList.remove("show");
+    }
+  });
+});
+
+closeRulesBtn.addEventListener("click", () => {
+  rulesContainer.classList.remove("show");
+});
 
 startBtn.addEventListener("click", () => {
   startScreen.style.display = "none";

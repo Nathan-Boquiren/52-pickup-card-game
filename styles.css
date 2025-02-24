@@ -39,19 +39,107 @@ body {
 #start-screen h1 {
     font-family: var(--primary-font);
     font-size: 3rem;
+    font-size: clamp(3rem, 5vw, 5rem);
 }
 
-#start-game-btn {
+#start-screen h3 {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    width: clamp(300px, 60vw, 60rem);
+}
+
+.rules-container-wrapper {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: brightness(0.75);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.rules-container {
+    background-color: var(--primary-color);
+    width: clamp(300px, 60vw, 60rem);
+    height: 30rem;
+    border: 2px solid white;
+    padding: 2rem;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.x-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.x-icon:hover {
+    color: rgb(182, 182, 182);
+}
+
+.rules-container h4 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    text-align: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid white;
+}
+
+.rules-container ul {
+    line-height: 2;
+    margin-left: 1rem;
+}
+
+.rules-container ul li {
+    font-weight: 300;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* animation */
+
+.rules-container-wrapper.show {
+    display: flex;
+    animation: showRules 0.3s ease forwards;
+}
+
+@keyframes showRules {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.btns-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 0 2rem;
+}
+
+.start-btn {
     background-color: transparent;
-    padding: 10px 2rem;
+    padding: 10px 0;
+    width: clamp(9rem, 15vw, 11rem);
     border-radius: 100vmax;
     border: 2px solid white;
     font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     font-weight: 300;
     cursor: pointer;
 }
 
-#start-game-btn:hover {
+.start-btn:hover {
     background-color: white;
     color: var(--primary-color);
     font-weight: 800;
@@ -380,6 +468,11 @@ h3 {
 /* ==================== RESPONSIVE DESIGN ====================  */
 
 @media (max-width: 768px) {
+
+    .rules-container ul {
+        line-height: 1.65;
+    }
+
     .card {
         height: 120px;
         border-radius: 5px;

@@ -12,16 +12,27 @@
 <body>
     <div id="start-screen">
         <h1>52 Pickup</h1>
-        <div class="rules-container">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+        <h3>Click (pick up) cards to earn points and form poker hands for bonuses!</h3>
+
+
+
+        <div class="rules-container-wrapper" id="rules-container-wrapper">
+            <div class="rules-container">
+                <span class="x-icon" id="close-rules-btn">&times;</span>
+                <h4>Game Rules</h4>
+                <ul>
+                    <li>Click cards to add their value to your score.</li>
+                    <li>Form poker hands (Pair, Flush, Straight) to earn bonus points and extra time.</li>
+                    <li>The game ends when all 52 cards are collected or time runs out.</li>
+                    <li>4 Random Bomb Cards → reshuffles all remaining cards.</li>
+                    <li>Click too fast? Your stamina will run out, causing a brief 2-second cooldown.</li>
+                </ul>
+            </div>
         </div>
-        <button id="start-game-btn">Start Game</button>
+        <div class="btns-wrapper">
+            <button id="see-rules-btn" class="start-btn">See rules</button>
+            <button id="start-game-btn" class="start-btn">Start Game</button>
+        </div>
     </div>
 
     <main id="main-area">
