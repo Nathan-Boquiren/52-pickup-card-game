@@ -109,6 +109,22 @@ function scatterDeck(deck) {
 
   let cards = document.querySelectorAll(".card");
 
+  // pick 4 random cards to rescatter cards
+  for (let i = 0; i < 4; i++) {
+    let randIndex = Math.floor(Math.random() * deck.length);
+    let card = deck[randIndex];
+    ct(card);
+    let cardElement = document.querySelector(`.${card.suit}-${card.rank}`);
+    if (cardElement) {
+      cardElement.classList.add("rescatter");
+    } else {
+      console.error(`Card element not found: ${card.suit}-${card.rank}`);
+    }
+  }
+  document.querySelectorAll(".rescatter").forEach((card) => {
+    card.addEventListener("click", reScatterCards);
+  });
+
   // Card click
   function handleCardClick(e) {
     if (noStamina) {
@@ -124,6 +140,12 @@ function scatterDeck(deck) {
   cards.forEach((card) => {
     card.addEventListener("click", handleCardClick);
     card.addEventListener("touchstart", handleCardClick);
+  });
+}
+
+function reScatterCards() {
+  deck.forEach((card) => {
+    scatterCard(`${card.suit}-${card.rank}`);
   });
 }
 
@@ -247,7 +269,6 @@ function updateStamina() {
     stamina = 0;
     noStamina = true;
     noStaminaOverlay.classList.add("no-stamina");
-    cl("No more stamina");
     setTimeout(() => {
       stamina = 50;
       noStamina = false;

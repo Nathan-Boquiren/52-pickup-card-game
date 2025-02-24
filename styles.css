@@ -121,6 +121,9 @@ main {
     position: absolute;
     top: 2rem;
     border-radius: 2rem;
+    z-index: 200;
+    background-color: var(--primary-color);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -278,8 +281,6 @@ h3 {
     overflow: hidden;
 }
 
-
-
 /* ===== Card ===== */
 
 .card {
@@ -298,6 +299,7 @@ h3 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border: 2px solid rgba(255, 0, 0, 0);
     cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), scale 0.15s ease, border 0.15s ease;
 }
 
 .card:hover {
